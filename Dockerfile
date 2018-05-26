@@ -4,8 +4,8 @@ FROM python:3.6-stretch
 RUN apt-get update && apt-get install -y nano
 ENV TERM xterm
 
-# Pillow, GIT and pngquant
-RUN apt-get update && apt-get install -y libjpeg-dev git pngquant
+# Pillow, GIT, pngquant and gettext
+RUN apt-get update && apt-get install -y libjpeg-dev git pngquant gettext
 
 # Mono
 RUN apt-get update && apt-get install -y apt-transport-https dirmngr
