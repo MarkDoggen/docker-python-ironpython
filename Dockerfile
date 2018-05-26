@@ -32,7 +32,5 @@ RUN apt-get update && apt-get install -y curl wget varnish redis-tools
 
 WORKDIR /app
 
-EXPOSE 8000
-
 CMD ["/bin/bash"]
 
