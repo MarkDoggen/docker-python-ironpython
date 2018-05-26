@@ -19,7 +19,7 @@ RUN git clone git://github.com/markdoggen/ironpython2.git IronLanguages
 WORKDIR IronLanguages
 RUN apt-get update && apt-get install -y make
 RUN make release
-ENV IRONPYTHONPATH=/usr/src/ironpython/IronLanguages/External.LCA_RESTRICTED/Languages/IronPython/27/Lib:$IRONPYTHONPATH
+ENV IRONPYTHONPATH=/usr/src/ironpython/IronLanguages/Src/StdLib/Lib:$IRONPYTHONPATH
 
 # GoAccess and lxml
 RUN apt-get update && apt-get install -y goaccess libxml2-dev libxslt1-dev
