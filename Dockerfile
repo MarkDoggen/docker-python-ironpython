@@ -4,6 +4,9 @@ FROM python:3.6-stretch
 RUN apt-get update && apt-get install -y nano
 ENV TERM xterm
 
+# PostgreSQL
+RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client && rm -rf /var/lib/apt/lists/*
+
 # Pillow, GIT, pngquant and gettext
 RUN apt-get update && apt-get install -y libjpeg-dev git pngquant gettext
 
