@@ -25,7 +25,7 @@ RUN make release
 ENV IRONPYTHONPATH=/usr/src/ironpython/IronLanguages/Src/StdLib/Lib:$IRONPYTHONPATH
 
 # GoAccess and lxml
-RUN apt-get update && apt-get install -y goaccess libxml2-dev libxslt1-dev
+RUN apt-get update && apt-get install -y goaccess=1:0.9.4-1+b1 geoip-database libxml2-dev libxslt1-dev
 
 # cURL, wget, Varnish and Redis tools
 RUN apt-get update && apt-get install -y curl wget varnish redis-tools
