@@ -1,7 +1,7 @@
 FROM python:3.6-stretch
 
-# Nano
-RUN apt-get update && apt-get install -y nano
+# Nano, wget and unzip
+RUN apt-get update && apt-get install -y nano wget unzip
 ENV TERM xterm
 
 # PostgreSQL
@@ -18,19 +18,16 @@ RUN apt-get update && apt-get install -y mono-complete
 
 # IronPython
 WORKDIR /usr/src/ironpython
-RUN git clone git://github.com/markdoggen/ironpython2.git IronLanguages
-WORKDIR IronLanguages
-RUN apt-get update && apt-get install -y make
-RUN make release
-ENV IRONPYTHONPATH=/usr/src/ironpython/IronLanguages/Src/StdLib/Lib:$IRONPYTHONPATH
+COPY IronPython.2.7.8.zip .
+RUN unzip IronPython.2.7.8.zip
+RUN alias ipy='mono /usr/src/ironpython/net45/ipy.exe -X:PrivateBinding'
 
 # GoAccess and lxml
 RUN apt-get update && apt-get install -y goaccess=1:0.9.4-1+b1 geoip-database libxml2-dev libxslt1-dev
 
-# cURL, wget, Varnish and Redis tools
-RUN apt-get update && apt-get install -y curl wget varnish redis-tools
+# cURL, Varnish and Redis tools
+RUN apt-get update && apt-get install -y curl varnish redis-tools
 
 WORKDIR /app
 
 CMD ["/bin/bash"]
-
