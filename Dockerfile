@@ -25,8 +25,11 @@ RUN alias ipy='mono /usr/src/ironpython/net45/ipy.exe -X:PrivateBinding'
 # GoAccess and lxml
 RUN apt-get update && apt-get install -y goaccess=1:0.9.4-1+b1 geoip-database libxml2-dev libxslt1-dev
 
-# cURL, Varnish, Redis tools and S3cmd
-RUN apt-get update && apt-get install -y curl varnish redis-tools s3cmd
+# cURL, Varnish and Redis tools
+RUN apt-get update && apt-get install -y curl varnish redis-tools
+
+# S3cmd
+RUN wget https://github.com/s3tools/s3cmd/archive/master.zip && unzip master.zip && rm master.zip && cd s3cmd-master && python setup.py install
 
 WORKDIR /app
 
